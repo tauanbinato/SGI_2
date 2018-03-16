@@ -5,7 +5,7 @@
 using namespace std;
 
 // Initializing array with 1 for futher multiplications.
-void initialize_array(int a[18] , int size)
+void initialize_array(int a[] , int size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -16,28 +16,29 @@ void initialize_array(int a[18] , int size)
 
 int main()
 {
+	const int total = 18;
 	int a = 2;
 	int b = 3;
 	int c = 5;
+	int num = 1;
 
-	int numbers[18];
-	initialize_array(numbers , 18);
+	int numbers[total];
+	initialize_array(numbers , total);
 	
 
-	for (int i = 0; i < 18; i++)
+	for (int i = 0; i < total; i++)
 	{
 		
-		int num = i + 1;
 
 		if (num == 1 || num == a || num == b || num == c)
 		{
 			numbers[i] = num;
+			num++;
 			continue;
 		}
 
 		int aux_num = num;
-		int aux_exit = 1;
-		bool isLoopFree = true;
+		bool flag = true;
 		while (true)
 		{
 			
@@ -45,36 +46,59 @@ int main()
 			{
 				aux_num = aux_num / a;
 				numbers[i] *= a;
-				isLoopFree = false;
+				if ((aux_num % a) == 0)
+				{
+
+					if (numbers[i] == num)
+					{
+						num++;
+						break;
+					}
+
+					flag = false;
+					num++;
+					continue;
+				}
+				else 
+				{
+					flag = true;
+					num++;
+					break;
+				}
+				//flag = false;
 			}
 			else if ((aux_num % b) == 0)
 			{
 				aux_num = aux_num / b;
 				numbers[i] *= b;
-				isLoopFree = false;
+				flag = false;
 			}
 			else if ((aux_num % c) == 0)
 			{
 				aux_num = aux_num / c;
 				numbers[i] *= c;
-				isLoopFree = false;
+				flag = false;
 			}
-		    
-			if (isLoopFree)
+
+		   
+			if ( flag == true)
 			{
-				aux_num = num + 1;
-				aux_exit = aux_num;
+				numbers[i] = 1;
+				i--;
+				num++;
+				break;
 			}
-			if (numbers[i] == num || numbers[i] == aux_exit)
+
+			if (numbers[i] == num)
 			{
-				num = aux_exit + 1;
+				num++;
 				break;
 			}
 			
 		}
 	}
 
-	cout << "Pos 18: " << numbers[18] << endl;
+	cout << "Pos : " << numbers[17] << endl;
 	getchar();
 	return 0;
 	
