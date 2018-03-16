@@ -4,13 +4,33 @@
 
 using namespace std;
 
-// Initializing array with 1 for futher multiplications.
-void initialize_array(int a[] , int size)
+
+
+int divideBy2(int n) 
 {
-	for (int i = 0; i < size; i++)
+	//First statement for the recursive function come back.
+	//Reaches here when the division is done.
+	if (n  == 1 )
+		return 1;
+	//Second statement for the recursive function come back.
+	//Enters here when the number is no longer necessary to check, like a prime number.
+	if (!((n % 2) == 0 || (n % 3) == 0 || (n % 5) == 0))
+		return 0;
+
+	if ((n % 2) == 0)
 	{
-		a[i] = 1;
+		return 2 * divideBy2(n / 2);
 	}
+	else if ((n % 3) == 0)
+	{
+		return 3 * divideBy2(n / 3);
+	}
+	else if ((n % 5) == 0)
+	{
+		return 5 * divideBy2(n / 5);
+	}
+	
+
 }
 
 
@@ -20,85 +40,33 @@ int main()
 	int a = 2;
 	int b = 3;
 	int c = 5;
-	int num = 1;
 
 	int numbers[total];
-	initialize_array(numbers , total);
-	
+	int currentNum = 1;
+	int lastNum = 1;
 
 	for (int i = 0; i < total; i++)
 	{
 		
-
-		if (num == 1 || num == a || num == b || num == c)
+		if (divideBy2(currentNum) == currentNum)
 		{
-			numbers[i] = num;
-			num++;
+			numbers[i] = currentNum;
+			lastNum = currentNum;
+			currentNum++;
+			continue;
+		}
+		else
+		{
+			currentNum++;
+			i--;
 			continue;
 		}
 
-		int aux_num = num;
-		bool flag = true;
-		while (true)
-		{
-			
-			if ((aux_num % a) == 0)
-			{
-				aux_num = aux_num / a;
-				numbers[i] *= a;
-				if ((aux_num % a) == 0)
-				{
-
-					if (numbers[i] == num)
-					{
-						num++;
-						break;
-					}
-
-					flag = false;
-					num++;
-					continue;
-				}
-				else 
-				{
-					flag = true;
-					num++;
-					break;
-				}
-				//flag = false;
-			}
-			else if ((aux_num % b) == 0)
-			{
-				aux_num = aux_num / b;
-				numbers[i] *= b;
-				flag = false;
-			}
-			else if ((aux_num % c) == 0)
-			{
-				aux_num = aux_num / c;
-				numbers[i] *= c;
-				flag = false;
-			}
-
-		   
-			if ( flag == true)
-			{
-				numbers[i] = 1;
-				i--;
-				num++;
-				break;
-			}
-
-			if (numbers[i] == num)
-			{
-				num++;
-				break;
-			}
-			
-		}
 	}
 
-	cout << "Pos : " << numbers[17] << endl;
+
+	
+	cout << "pos : " << numbers[ -1] << endl;
 	getchar();
 	return 0;
 	
