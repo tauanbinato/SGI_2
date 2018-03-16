@@ -1,3 +1,22 @@
+/************************************************************;
+* Project           : SGI_2
+*
+* Program name : SGI_2_Tauan_Binato
+*
+* Author : Tauan Binato Flores
+*
+* Date created : 2018/03/16
+*
+* Purpose : Summarize demographics data for the study.
+*
+* Revision History :
+*
+* Date          Author          
+* 2018/03/16    tauanbf       
+* 2018/03/15	tauanbf
+* 2018/03/14	tauanbf
+| ***********************************************************/
+
 #include <iostream>
 #include <stdio.h>
 #include <math.h> 
