@@ -1,4 +1,4 @@
-/************************************************************;
+/***************************************************************************************************************;
 * Project           : SGI_2
 *
 * Program name : SGI_2_Tauan_Binato
@@ -7,7 +7,8 @@
 *
 * Date created : 2018/03/16
 *
-* Purpose : Summarize demographics data for the study.
+* Purpose : Design an algorithm to find the number that occupies position 1500 in an array that stores numbers
+*			fully factorable by 2,3 and 5 only.
 *
 * Revision History :
 *
@@ -15,7 +16,7 @@
 * 2018/03/16    tauanbf       
 * 2018/03/15	tauanbf
 * 2018/03/14	tauanbf
-| ***********************************************************/
+| ****************************************************************************************************************/
 
 #include <iostream>
 #include <stdio.h>
